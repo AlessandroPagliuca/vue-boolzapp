@@ -1,10 +1,12 @@
 :root{
    --bg-grey:#d9dbd4; 
+   --bg-green:#009688;
 }
 
 header{
     width: 100%;
     height: 10vh;
+    background-color: #009688;
 }
 
 main{
@@ -19,8 +21,10 @@ main{
     height: 100vh;
 }
 .webApp{
-    width: 100%;
+    width: 90%;
     height: 80vh;
+    position: relative;
+    top: -70px;
 }
 .c92ContainerContacts{
     width: 40%;
@@ -31,6 +35,15 @@ main{
     width: 60%;
     height: 100%;
 }
+
 .debug{
     border: 1px solid black;
+}
+
+.c92Profile{
+    overflow: hidden;
+}
+
+.c92Avatar{
+    width: 100%;
 }

@@ -112,7 +112,7 @@ createApp({
                 {
                     id:6,
                     name: 'Claudia',
-                    avatar: './img/avatar_5.png',
+                    avatar: './img/avatar_6.png',
                     visible: true,
                     messages: [
                         {
@@ -173,7 +173,17 @@ createApp({
                         }
                     ],
                 }
-            ]
+            ],
+            selectedContact: null,
         }
+    },
+    methods:{
+        
+    },
+    mount:{
+
+    },
+    mounted(){
+
     }
 }).mount('#app');

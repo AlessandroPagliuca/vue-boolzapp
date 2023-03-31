@@ -11,17 +11,62 @@
 <body>
 
     <div id="app" class="c92Wrapper">
-
-        <header class="bg-success"></header>
-
+        <header></header>
         <main>
-            <div class="container p-3">
+            <div class="container-fluid d-flex justify-content-center align-items-center">
+
                 <div class="d-flex align-content-center webApp debug">
+
                     <div class="c92ContainerContacts debug">
-                        
+
+                        <div class="debug">1</div>
+
+                        <div class="c92Notify">Notifica</div>
+
+                        <div class="c92SearchChat">
+                            <input type="text" placeholder="search">
+                        </div>
+
+                        <div class="c92ContactList">
+                                    <div class="row flex-row" v-for="(contact, i) in contacts" :key="contact.id" @click="selectedContact= contact">
+                                        <div class="c92Profile col-3">
+                                            <img class="c92Avatar" :src="contact.avatar.replace('.png', '.jpg' )" alt="">
+                                        </div>
+                                        
+                                        <div class="col"> {{contact.name}} </div>
+
+                                        <div class="col-2">12:00</div>
+                                    </div>
+                        </div>
+
                     </div>
         
-                    <div class="c92ContainerChat debug"></div>
+                    <div  v-if="selectedContact != null" class="c92ContainerChat debug">
+
+                        <div class="c92ContactHeader">
+
+                            <div class="row flex-row">
+                                <div class="c92Profile col-3">
+                                    <img class="c92Avatar" :src="selectedContact.avatar.replace('.png', '.jpg' )" alt="">
+                                </div>
+                                <div class="col"> {{selectedContact.name}}</div>
+
+                                <div class="col-2">12:00</div>
+                            </div>
+                        
+                        </div>
+
+                        <div class="c92Chat">
+                            <div class="" v-for="(message, i) in selectedContact.messages" :key="i" >
+                                <div class=""> {{message.message}} </div>
+                            </div>
+                        </div>
+
+                        <div class="c92InputMessage">
+                            <input type="text" placeholder="send message">
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </main>
