@@ -24,37 +24,42 @@
                     notifiche, barra di ricerca contatti e la lista contatti -->
                     <div class="c92ContainerContacts debug">
                         <!--Accesso utente-->
-                        <div class="debug">1</div>
+                        <div class="c92Login">1</div>
                         <!--Notifiche-->
-                        <div class="c92Notify">Notifica</div>
+                        <div class="c92Notify">
+                            <span class="bg-white">&#x1F515;</span>
+                            <span class="">Ricevi notifiche di nuovi messaggi</span>
+                        </div>
                         <!--Barra di ricerca -->
-                        <div class="c92SearchChat">
-                            <input type="text" placeholder="search">
+                        <div class="c92SearchChat p-2 mb-3">
+                            <div class="input-group input-group-sm">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">&#x2315;</span>
+                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                              </div>
                         </div>
                         <!--Lista contatti-->
                         <div class="c92ContactList">
-                            <div class="row flex-row" v-for="(contact, i) in contacts" :key="contact.id" @click="selectedContact= contact">
-                                <div class="c92Profile col-3">
-                                    <img class="c92Avatar" :src="contact.avatar.replace('.png', '.jpg' )" alt="">
+                            <div class="row flex-row g-0 c92Hover" v-for="(contact, i) in contacts" :key="contact.id" @click="selectedContact= contact">
+                                <div class="c92Profile col-2">
+                                    <img class="p-1" :src="contact.avatar.replace('.png', '.jpg' )" alt="">
                                 </div>
                                         
-                                <div class="col"> {{contact.name}} </div>
+                                <div class="col-8"> {{contact.name}} </div>
 
-                                <div class="col-2">12:00</div>
+                                <div class="col-2"> 12:00 </div>
                             </div>
                         </div>
-
                     </div>
                     <!--Creazione della chat da visualizzare -->
                     <div  v-if="selectedContact != null" class="c92ContainerChat debug">
                         <!--Visualizzazione dell'utente con cui stiamo scrivendo-->
                         <div class="c92ContactHeader">
 
-                            <div class="row flex-row">
-                                <div class="c92Profile col-3">
-                                    <img class="c92Avatar" :src="selectedContact.avatar.replace('.png', '.jpg' )" alt="">
+                            <div class="row flex-row g-0">
+                                <div class="c92Profile col-1">
+                                    <img :src="selectedContact.avatar.replace('.png', '.jpg' )" alt="">
                                 </div>
-                                <div class="col-auto"> {{selectedContact.name}}</div>
+                                <div class="col"> {{selectedContact.name}}</div>
 
                                 <div class="col-2">12:00</div>
                             </div>
@@ -63,14 +68,15 @@
                         <!--Container dove andremo a visualizzare i messaggi scritti dall'utente-->
                         <div class="c92Chat">
                             <div :class="{ 'c92Sent': message.status == 'sent', 'c92Received': message.status == 'received' }" v-for="(message, i) in selectedContact.messages" :key="i">
-                                <div class=""> {{message.message}} </div>
+                               <div class="text-dark badge p-2 m-3" :class="{ 'c92SentBg': message.status == 'sent', 'c92ReceivedBg': message.status == 'received' }">
+                                    {{message.message}} 
+                                </div>
                             </div>
                         </div>
                         <!-- barra di input per scrivere i messaggi-->
                         <div class="c92InputMessage">
                             <input type="text" placeholder="send message" v-model="newMessage" @keyup.enter="insertNewMessage()">
                             <button class="btn" @click.stop="insertNewMessage()">&#10148;</button>
-                            
                         </div>
                     </div>
 

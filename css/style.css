@@ -1,6 +1,11 @@
 :root{
    --bg-grey:#d9dbd4; 
    --bg-green:#009688;
+   --bg-sent-message:#d8fbd2;
+   --bg-received-message:#fdfdfd;
+   --bg-box-white:#fcfcfc;
+   --bg-notify:#8edafc;
+
 }
 
 header{
@@ -20,28 +25,65 @@ main{
     width: 100%;
     height: 100vh;
 }
+
 .webApp{
     width: 90%;
     height: 80vh;
     position: relative;
     top: -70px;
+    overflow: hidden;
+    min-height: 300px;
 }
+
 .c92ContainerContacts{
-    width: 40%;
+    width: 300px;
     height: 100%;
+    background-color: var(--bg-box-white);
+    cursor: pointer;
+}
+
+.c92Notify{
+    background-color: #8edafc;
+}
+.c92Login, .c92Notify{
+    height:50px;
+}
+.c92SearchChat{
+    height: 30px;
 }
 
 .c92ContainerChat{
-    width: 60%;
+    width: calc(100% - 300px);
     height: 100%;
 }
+.c92ContactList{
+    height: calc(100% - 130px);
+    overflow-y: auto;
+}
+.c92Hover:hover{
+    background-color: #d9dbd4;
+}
+.c92ContactHeader, .c92InputMessage{
+    height: 60px;
+    background-color: var(--bg-box-white);
+}
+
+.c92Chat{
+    height: calc(100% - 120px);
+    background-image: url('../img/mine.jpg');
+}
+
 
 .debug{
     border: 1px solid black;
 }
 
-.c92Profile{
+.c92Profile img{
     overflow: hidden;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .c92Avatar{
@@ -51,6 +93,17 @@ main{
 .c92Sent{
     text-align: end;
 }
+
+.c92SentBg{
+    background-color: var(--bg-sent-message);
+
+}
+
 .c92Received{
     text-align: left;
+}
+
+.c92ReceivedBg{
+    background-color: var(--bg-received-message);
+
 }

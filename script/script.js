@@ -189,12 +189,23 @@ createApp({
                 status: 'sent',
             });
             this.newMessage = '';
-        }
-    },
-    mount:{
+            this.receivedMessage();
+        },
 
+        receivedMessage(){
+            setTimeout(() => {
+                this.selectedContact.messages.push({
+                    date: Date.now(),
+                    message: 'ok',
+                    status: 'received',
+                });
+            }, 1000); 
+        },     
+    },
+    beforeMount(){
+        console.log('beforeMount');
     },
     mounted(){
-
+        console.log('mounted');
     }
 }).mount('#app');
