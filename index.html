@@ -11,57 +11,62 @@
 <body>
 
     <div id="app" class="c92Wrapper">
+        <!--Creazione dell'header solo per visualizzare in sfondo il colore verde-->
         <header></header>
+        <!--Creazione del main per visualizzare in sfondo il colore grigio 
+        e per posizionare correttamente la web app-->
         <main>
+            <!--Centriamo in pagina la web app -->
             <div class="container-fluid d-flex justify-content-center align-items-center">
-
+                <!--Da questo punto parte tutta la nostra web app-->
                 <div class="d-flex align-content-center webApp debug">
-
+                    <!--Container lato sinistro dove visualizzeremo: l'accesso dell'utente,
+                    notifiche, barra di ricerca contatti e la lista contatti -->
                     <div class="c92ContainerContacts debug">
-
+                        <!--Accesso utente-->
                         <div class="debug">1</div>
-
+                        <!--Notifiche-->
                         <div class="c92Notify">Notifica</div>
-
+                        <!--Barra di ricerca -->
                         <div class="c92SearchChat">
                             <input type="text" placeholder="search">
                         </div>
-
+                        <!--Lista contatti-->
                         <div class="c92ContactList">
-                                    <div class="row flex-row" v-for="(contact, i) in contacts" :key="contact.id" @click="selectedContact= contact">
-                                        <div class="c92Profile col-3">
-                                            <img class="c92Avatar" :src="contact.avatar.replace('.png', '.jpg' )" alt="">
-                                        </div>
+                            <div class="row flex-row" v-for="(contact, i) in contacts" :key="contact.id" @click="selectedContact= contact">
+                                <div class="c92Profile col-3">
+                                    <img class="c92Avatar" :src="contact.avatar.replace('.png', '.jpg' )" alt="">
+                                </div>
                                         
-                                        <div class="col"> {{contact.name}} </div>
+                                <div class="col"> {{contact.name}} </div>
 
-                                        <div class="col-2">12:00</div>
-                                    </div>
+                                <div class="col-2">12:00</div>
+                            </div>
                         </div>
 
                     </div>
-        
+                    <!--Creazione della chat da visualizzare -->
                     <div  v-if="selectedContact != null" class="c92ContainerChat debug">
-
+                        <!--Visualizzazione dell'utente con cui stiamo scrivendo-->
                         <div class="c92ContactHeader">
 
                             <div class="row flex-row">
                                 <div class="c92Profile col-3">
                                     <img class="c92Avatar" :src="selectedContact.avatar.replace('.png', '.jpg' )" alt="">
                                 </div>
-                                <div class="col"> {{selectedContact.name}}</div>
+                                <div class="col-auto"> {{selectedContact.name}}</div>
 
                                 <div class="col-2">12:00</div>
                             </div>
                         
                         </div>
-
+                        <!--Container dove andremo a visualizzare i messaggi scritti dall'utente-->
                         <div class="c92Chat">
                             <div class="" v-for="(message, i) in selectedContact.messages" :key="i" >
                                 <div class=""> {{message.message}} </div>
                             </div>
                         </div>
-
+                        <!-- barra di input per scrivere i messaggi-->
                         <div class="c92InputMessage">
                             <input type="text" placeholder="send message">
                         </div>
