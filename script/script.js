@@ -175,10 +175,21 @@ createApp({
                 }
             ],
             selectedContact: null,
+            newMessage: '',
         }
     },
     methods:{
-        
+        insertNewMessage(){
+            if (this.newMessage == '') {
+                return;
+            }
+            this.selectedContact.messages.push({
+                date: Date.now(),
+                message: this.newMessage,
+                status: 'sent',
+            });
+            this.newMessage = '';
+        }
     },
     mount:{
 

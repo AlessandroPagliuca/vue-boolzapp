@@ -47,3 +47,10 @@ main{
 .c92Avatar{
     width: 100%;
 }
+
+.c92Sent{
+    text-align: end;
+}
+.c92Received{
+    text-align: left;
+}

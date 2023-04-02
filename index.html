@@ -62,13 +62,15 @@
                         </div>
                         <!--Container dove andremo a visualizzare i messaggi scritti dall'utente-->
                         <div class="c92Chat">
-                            <div class="" v-for="(message, i) in selectedContact.messages" :key="i" >
+                            <div :class="{ 'c92Sent': message.status == 'sent', 'c92Received': message.status == 'received' }" v-for="(message, i) in selectedContact.messages" :key="i">
                                 <div class=""> {{message.message}} </div>
                             </div>
                         </div>
                         <!-- barra di input per scrivere i messaggi-->
                         <div class="c92InputMessage">
-                            <input type="text" placeholder="send message">
+                            <input type="text" placeholder="send message" v-model="newMessage" @keyup.enter="insertNewMessage()">
+                            <button class="btn" @click.stop="insertNewMessage()">&#10148;</button>
+                            
                         </div>
                     </div>
 
