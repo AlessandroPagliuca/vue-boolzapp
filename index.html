@@ -34,7 +34,7 @@
                                 <div class="col-7"> Utente </div>
 
                                 <div class="col-3">
-                                    <div class="d-flex justify-content-between">
+                                    <div class="d-flex justify-content-between c92Cursors">
                                         <i class="fa-solid fa-circle-notch text-secondary px-1"></i>
                                         <i class="fa-solid fa-message text-secondary px-1"></i>
                                         <i class="fa-solid fa-ellipsis-vertical text-secondary px-2"></i>
@@ -57,7 +57,7 @@
                                     </small>
                                 </div>
                                     
-                                <a href="#" class="text-secondary">
+                                <a href="" class="text-secondary">
                                     <small>Attiva notifiche desktop</small>
                                 </a>
                             </div>
@@ -65,12 +65,12 @@
                         <!--Barra di ricerca -->
                         <div class="c92SearchChat py-2 px-3 d-flex justify-content-center align-content-center">
                             <div class="input-group input-group-sm">
-                                <span class="input-group-text c92Bg-grey" id="inputGroup-sizing-sm">&#x2315;</span>
-                                <input type="text" class="form-control c92Bg-grey" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                              </div>
+                                <span class="input-group-text c92Bg-grey" @click.stop="filteredList()">&#x2315;</span>
+                                <input type="text" class="form-control c92Bg-grey" v-model="search" @keydown="filteredList()">
+                            </div>
                         </div>
                         <!--Lista contatti-->
-                        <div class="c92ContactList py-3">
+                        <div class="c92ContactList py-3 pb-5">
                             <div class="row flex-row g-0  align-items-center c92Hover border-bottom" v-for="(contact, i) in contacts" :key="contact.id" @click="selectedContact= contact">
                                 <div class="c92Profile col-2">
                                     <img class="p-1 my-2" :src="contact.avatar.replace('.png', '.jpg' )" alt="">
@@ -94,7 +94,7 @@
                                 </div>
 
                                 <div class="col-2">
-                                    <div class="d-flex justify-content-center">
+                                    <div class="d-flex justify-content-center c92Cursors">
                                         <i class="fa-solid fa-magnifying-glass fs-5 text-secondary py-1 px-2"></i>
                                         <i class="fa-solid fa-paperclip fs-5 text-secondary py-1 px-2"></i>
                                         <i class="fa-solid fa-ellipsis-vertical fs-5 text-secondary py-1 px-2"></i>    
@@ -107,36 +107,33 @@
                         <!--Container dove andremo a visualizzare i messaggi scritti dall'utente-->
                         <div class="c92Chat">
                             <div :class="{ 'c92Sent': message.status == 'sent', 'c92Received': message.status == 'received' }" v-for="(message, i) in selectedContact.messages" :key="i">
-                               <div class="text-dark badge p-2 m-3" :class="{ 'c92SentBg': message.status == 'sent', 'c92ReceivedBg': message.status == 'received' }">
+                               <div class="text-dark badge p-2 m-3 c92BreakWord" :class="{ 'c92SentBg': message.status == 'sent', 'c92ReceivedBg': message.status == 'received' }">
                                     {{message.message}} 
                                 </div>
                             </div>
                         </div>
                         <!-- barra di input per scrivere i messaggi-->
                         <div class="c92InputMessage row g-0 justify-content-between align-items-center">
-                                <div class="col">
-                                    <div class="d-flex justify-content-center">
-                                        <i class="fa-regular fa-face-smile fs-4 text-secondary px-1"></i>
+                            <div class="col">
+                                <div class="d-flex justify-content-center">
+                                    <i class="fa-regular fa-face-smile fs-4 text-secondary px-1 c92Cursors"></i>
+                                </div>
+                            </div>
+                            <div class="col-10">
+                                <input type="text" placeholder="send message" class="w-100" v-model="newMessage" @keyup.enter="insertNewMessage()">
+                            </div>
+                            <div class="col">
+                                <div class="d-flex justify-content-center">
+                                    <div  v-if="newMessage != ''">
+                                        <i class="fa-solid fa-paper-plane text-secondary fs-6 c92Cursors"  @click.stop="insertNewMessage()"></i>
+                                    </div>
+                                    <div v-else>
+                                        <i class="fa-solid fa-microphone text-secondary fs-6 c92Cursors"></i>
                                     </div>
                                 </div>
-                                <div class="col-10">
-                                    <input type="text" placeholder="send message" class="w-100 " v-model="newMessage" @keyup.enter="insertNewMessage()">
-                                </div>
-                                <div class="col">
-                                    <div class="d-flex justify-content-center">
-                                        <div  v-if="newMessage != ''">
-                                            <i class="fa-solid fa-paper-plane text-secondary fs-6"  @click.stop="insertNewMessage()"></i>
-                                        </div>
-                                        <div v-else>
-                                            <i class="fa-solid fa-microphone text-secondary fs-6"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            
-                            
+                            </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </main>

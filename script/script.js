@@ -176,6 +176,7 @@ createApp({
             ],
             selectedContact: null,
             newMessage: '',
+            search: '',
         }
     },
     methods:{
@@ -200,12 +201,12 @@ createApp({
                     status: 'received',
                 });
             }, 1000); 
-        },     
+        }, 
+        filteredList(){
+            setTimeout(() => {
+                let contactFiltered = this.contacts.filter(contact => contact.name.toLowerCase().includes(this.search.toLowerCase()));
+                console.log(contactFiltered);
+            }, 100);
+        } ,
     },
-    beforeMount(){
-        console.log('beforeMount');
-    },
-    mounted(){
-        console.log('mounted');
-    }
 }).mount('#app');

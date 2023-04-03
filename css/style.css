@@ -43,7 +43,7 @@ main{
     width: 300px;
     height: 100%;
     background-color: var(--bg-box-white);
-
+    user-select: none;
 }
 
 .c92Notify{
@@ -89,6 +89,7 @@ main{
 .c92ContactHeader, .c92InputMessage{
     height: 60px;
     background-color: var(--bg-app);
+    user-select: none;
 }
 
 .c92Chat{
@@ -96,9 +97,14 @@ main{
     background-image: url('../img/mine.jpg');
 }
 
+.c92BreakWord{
+    inline-size: auto;
+    overflow: hidden;
+    overflow-wrap: break-word;
+}
 
-.debug{
-    border: 1px solid black;
+.c92Cursors{
+    cursor: pointer;
 }
 
 .c92Profile img{
