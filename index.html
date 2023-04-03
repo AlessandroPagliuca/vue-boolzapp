@@ -106,9 +106,23 @@
                             </div>
                         </div>
                         <!-- barra di input per scrivere i messaggi-->
-                        <div class="c92InputMessage">
-                            <input type="text" placeholder="send message" v-model="newMessage" @keyup.enter="insertNewMessage()">
-                            <i class="fa-solid fa-paper-plane p-2"  @click.stop="insertNewMessage()"></i>
+                        <div class="c92InputMessage row g-0 justify-content-between align-items-center">
+                                <div class="col-auto">
+                                    <span class="fs-4 px-2">&#x1F642;</span>
+                                </div>
+                                <div class="col align-content-center">
+                                    <input type="text" placeholder="send message" class="w-100 px-4" v-model="newMessage" @keyup.enter="insertNewMessage()">
+                                </div>
+                                <div class="col-auto">
+                                    <div  v-if="newMessage != ''">
+                                        <i class="fa-solid fa-paper-plane px-2 text-secondary fs-4"  @click.stop="insertNewMessage()"></i>
+                                    </div>
+                                    <div v-else>
+                                        <i class="fa-solid fa-microphone px-2 text-secondary fs-4"></i>
+                                    </div>
+                                </div>
+                            
+                            
                         </div>
                     </div>
 
