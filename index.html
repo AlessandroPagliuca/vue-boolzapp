@@ -78,7 +78,7 @@
                                         
                                 <div class="col-8"> {{contact.name}} </div>
 
-                                <div class="col-2"> 12:00 </div>
+                                <div class="col-2">12:00</div>
                             </div>
                         </div>
                     </div>
@@ -108,7 +108,8 @@
                         <div class="c92Chat">
                             <div :class="{ 'c92Sent': message.status == 'sent', 'c92Received': message.status == 'received' }" v-for="(message, i) in selectedContact.messages" :key="i">
                                <div class="text-dark badge p-2 m-3 c92BreakWord" :class="{ 'c92SentBg': message.status == 'sent', 'c92ReceivedBg': message.status == 'received' }">
-                                    {{message.message}} 
+                                  <p class="text-start">{{message.message}}</p> 
+                                  <small class="text-end text-secondary">{{message.date}}</small>  
                                 </div>
                             </div>
                         </div>

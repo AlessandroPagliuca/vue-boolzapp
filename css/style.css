@@ -95,6 +95,7 @@ main{
 .c92Chat{
     height: calc(100% - 120px);
     background-image: url('../img/mine.jpg');
+    overflow-y: auto;
 }
 
 .c92BreakWord{

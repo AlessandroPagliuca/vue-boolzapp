@@ -185,7 +185,7 @@ createApp({
                 return;
             }
             this.selectedContact.messages.push({
-                date: Date.now(),
+                date: new Date().getHours() + ':' + new Date().getMinutes(),
                 message: this.newMessage,
                 status: 'sent',
             });
@@ -196,7 +196,7 @@ createApp({
         receivedMessage(){
             setTimeout(() => {
                 this.selectedContact.messages.push({
-                    date: Date.now(),
+                    date: new Date().getHours() + ':' + new Date().getMinutes(),
                     message: 'ok',
                     status: 'received',
                 });
@@ -206,7 +206,7 @@ createApp({
             setTimeout(() => {
                 let contactFiltered = this.contacts.filter(contact => contact.name.toLowerCase().includes(this.search.toLowerCase()));
                 console.log(contactFiltered);
-            }, 100);
+            }, 200);
         } ,
     },
 }).mount('#app');
