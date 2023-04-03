@@ -5,6 +5,7 @@
    --bg-received-message:#fdfdfd;
    --bg-box-white:#fcfcfc;
    --bg-notify:#8edafc;
+   --bg-app:#f0f2f5;
 
 }
 
@@ -33,39 +34,61 @@ main{
     top: -70px;
     overflow: hidden;
     min-height: 300px;
+    background-color: var(--bg-app);
+    border: 1px solid var(--bg-app);
+    border-radius: 5px;
 }
 
 .c92ContainerContacts{
     width: 300px;
     height: 100%;
     background-color: var(--bg-box-white);
-    cursor: pointer;
+
 }
 
 .c92Notify{
     background-color: #8edafc;
 }
-.c92Login, .c92Notify{
-    height:50px;
+.c92Bell{
+    color: var(--bg-notify);
+    width: 20px;
+    height: 20px;
+    
 }
+.c92BoxBell{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+.c92Login, .c92Notify{
+    height:60px;
+}
+
 .c92SearchChat{
-    height: 30px;
+    background-color: var(--bg-box-white);
+}
+
+.c92Bg-grey{
+    background-color: var(--bg-app);
 }
 
 .c92ContainerChat{
     width: calc(100% - 300px);
     height: 100%;
+
 }
 .c92ContactList{
-    height: calc(100% - 130px);
+    height: calc(100% - 120px);
     overflow-y: auto;
+    background-color: var(--bg-box-white);
+    cursor: pointer;
 }
 .c92Hover:hover{
     background-color: #d9dbd4;
 }
 .c92ContactHeader, .c92InputMessage{
     height: 60px;
-    background-color: var(--bg-box-white);
+    background-color: var(--bg-app);
 }
 
 .c92Chat{
