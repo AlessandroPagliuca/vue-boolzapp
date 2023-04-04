@@ -115,10 +115,24 @@
                         </div>
                         <!--Container dove andremo a visualizzare i messaggi scritti dall'utente-->
                         <div class="c92Chat">
-                            <div :class="{ 'c92Sent': message.status == 'sent', 'c92Received': message.status == 'received' }" v-for="(message, i) in selectedContact.messages" :key="i">
-                               <div class="text-dark badge p-2 m-3 c92BreakWord" :class="{ 'c92SentBg': message.status == 'sent', 'c92ReceivedBg': message.status == 'received' }">
-                                  <p class="text-start">{{message.message}}</p> 
-                                  <small class="text-end text-secondary">{{message.date}}</small>  
+                            <!--Print message if sent or received-->
+                            <div class="c92Option" :class="{ 'c92Sent': message.status == 'sent', 'c92Received': message.status == 'received' }" v-for="(message, i) in selectedContact.messages" :key="i">
+                               <div class="text-dark badge p-2 m-3 c92BreakWord c92BoxMsg" :class="{ 'c92SentBg': message.status == 'sent', 'c92ReceivedBg': message.status == 'received' }">
+                                <!--Message-->    
+                                <div class="text-start p-1 me-4">{{message.message}}</div> 
+                                    <!--MILESTON 5-->
+                                    <div class="c92OptionMsg c92Cursors">
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                        <div class="c92Options text-secondary py-1">
+                                            <p class="border-bottom py-1">Message info</p>
+                                            <p class="border-bottom">Delete message</p>
+                                        </div>
+                                    </div>
+                                    <!--Date message-->
+                                    <div>
+                                        <small class="text-end text-secondary">{{message.date}}</small> 
+                                    </div>
+
                                 </div>
                             </div>
                         </div>

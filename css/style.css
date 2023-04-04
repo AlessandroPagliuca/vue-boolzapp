@@ -136,11 +136,33 @@ main{
 
 }
 
-.c92Received{
+.c92Received, .c92Options{
     text-align: left;
 }
 
 .c92ReceivedBg{
     background-color: var(--bg-received-message);
 
+}
+
+.c92BoxMsg{
+    position: relative;
+}
+.c92OptionMsg{
+    display: none;
+}
+
+.c92Option:hover .c92OptionMsg{
+display: block;
+position: absolute;
+top: 11px;
+right: 5px;
+}
+
+.c92Options{
+    width: 100px;
+    border-radius: 5px;
+    background-color: var(--bg-box-white);
+    position: fixed;
+    box-shadow: 0rem 0rem .5rem black;
 }
