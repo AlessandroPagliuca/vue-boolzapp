@@ -127,7 +127,7 @@ main{
     width: 100%;
 }
 
-.c92Sent{
+.c92Sent,  .c92SentBg, .c92ReceivedBg{
     text-align: end;
 }
 
