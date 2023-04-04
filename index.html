@@ -66,12 +66,12 @@
                         <div class="c92SearchChat py-2 px-3 d-flex justify-content-center align-content-center">
                             <div class="input-group input-group-sm">
                                 <span class="input-group-text c92Bg-grey" @click.stop="filteredList()">&#x2315;</span>
-                                <input type="text" class="form-control c92Bg-grey" v-model="search" @keydown="filteredList()">
+                                <input type="text" class="form-control c92Bg-grey" v-model.trim="search" @keydown="filteredList()">
                             </div>
                         </div>
                         <!--Lista contatti-->
                         <div class="c92ContactList py-3 pb-5">
-                            <div class="row flex-row g-0  align-items-center c92Hover border-bottom" v-for="(contact, i) in contacts" :key="contact.id" @click="selectedContact= contact">
+                            <div class="row flex-row g-0  align-items-center c92Hover border-bottom" v-for="(contact, i) in contacts" :key="contact.id" @click="selectedContact= contact" :class="{'d-none': !contact.visible}">
                                 <div class="c92Profile col-2">
                                     <img class="p-1 my-2" :src="contact.avatar.replace('.png', '.jpg' )" alt="">
                                 </div>
@@ -121,7 +121,7 @@
                                 </div>
                             </div>
                             <div class="col-10">
-                                <input type="text" placeholder="send message" class="w-100" v-model="newMessage" @keyup.enter="insertNewMessage()">
+                                <input type="text" placeholder="send message" class="w-100" v-model.trim="newMessage" @keyup.enter="insertNewMessage()">
                             </div>
                             <div class="col">
                                 <div class="d-flex justify-content-center">

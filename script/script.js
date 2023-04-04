@@ -204,9 +204,14 @@ createApp({
         }, 
         filteredList(){
             setTimeout(() => {
-                let contactFiltered = this.contacts.filter(contact => contact.name.toLowerCase().includes(this.search.toLowerCase()));
-                console.log(contactFiltered);
-            }, 200);
+                this.contacts.forEach((contact) => {
+                   if(!contact.name.toLowerCase().includes(this.search.toLowerCase())){
+                    contact.visible = false;
+                   } else{
+                    contact.visible = true;
+                   }
+                })
+            }, 100);
         } ,
     },
 }).mount('#app');
