@@ -185,7 +185,7 @@ createApp({
                 return;
             }
             this.selectedContact.messages.push({
-                date: new Date().getHours() + ':' + new Date().getMinutes(),
+                date: new Date().getFullYear() + '/' + new Date().getMonth() + '/' + new Date().getDay() + ' ' + new Date().getHours() + ':' + new Date().getMinutes(),
                 message: this.newMessage,
                 status: 'sent',
             });
@@ -196,7 +196,7 @@ createApp({
         receivedMessage(){
             setTimeout(() => {
                 this.selectedContact.messages.push({
-                    date: new Date().getHours() + ':' + new Date().getMinutes(),
+                    date: new Date().getFullYear() + '/' + new Date().getMonth() + '/' + new Date().getDay() + ' ' + new Date().getHours() + ':' + new Date().getMinutes(),
                     message: 'ok',
                     status: 'received',
                 });
