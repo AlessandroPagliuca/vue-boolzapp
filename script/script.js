@@ -213,8 +213,5 @@ createApp({
                 })
             }, 100);
         },
-        //deleteMsg(item){
-           //this.contacts.splice(item, 1);
-        //},
     },
 }).mount('#app');

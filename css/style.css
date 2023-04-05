@@ -168,3 +168,7 @@ right: 100px;
     z-index: 1000;
     box-shadow: 0rem 0rem 1rem grey;
 }
+
+.c92MessageOption:hover{
+    color: var(--bg-green);
+}

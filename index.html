@@ -128,23 +128,22 @@
                                 :class="{ 'c92Sent': message.status == 'sent', 'c92Received': message.status == 'received' }"
                                 v-for="(message, i) in selectedContact.messages" :key="i">
 
-                                <div class="text-dark badge p-2 m-3 c92BreakWord c92BoxMsg"
-                                    :class="{ 'c92SentBg': message.status == 'sent', 'c92ReceivedBg': message.status == 'received' }">
+                                <div class="text-dark badge p-2 m-3 c92BreakWord c92BoxMsg" :class="{ 'c92SentBg': message.status == 'sent', 'c92ReceivedBg': message.status == 'received' }">
                                     <!--Message-->
                                     <span class="text-start p-1 me-4">{{message.message}}</span>
                                     <!--MILESTON 5-->
                                     <span class="fa-solid fa-chevron-down c92Cursors"></span>
                                     <div class="c92OptionMsg c92Cursors">
                                         <div class="c92OptionsSelect d-flex flex-wrap justify-content-center p-2 text-dark">
-                                            <div>Message info</div>
-                                            <div @click.stop="deleteMsg(item)">Delete message</div>
+                                            <div class="c92MessageOption">Message info</div>
+                                            <div class="c92MessageOption">Delete message</div>
                                         </div>
                                     </div>
                                     <!--Date message-->
                                     <div>
                                         <small class="text-end text-secondary">{{message.date}}</small>
                                     </div>
-                                    
+
                                 </div>
 
                             </div>
