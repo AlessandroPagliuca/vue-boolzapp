@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
     <title>Boolzapp</title>
 </head>
+
 <body>
 
     <div id="app" class="c92Wrapper">
@@ -30,7 +35,7 @@
                                 <div class="c92Profile col-2">
                                     <img class="p-1" src="./img/avatar_io.jpg" alt="login">
                                 </div>
-                                        
+
                                 <div class="col-7"> Utente </div>
 
                                 <div class="col-3">
@@ -49,14 +54,14 @@
                                     <i class="fa-solid fa-bell-slash c92Bell"></i>
                                 </span>
                             </div>
-                            
+
                             <div class="col-auto">
                                 <div>
                                     <small>
                                         Ricevi notifiche di nuovi messaggi
                                     </small>
                                 </div>
-                                    
+
                                 <a href="" class="text-secondary">
                                     <small>Attiva notifiche desktop</small>
                                 </a>
@@ -66,31 +71,34 @@
                         <div class="c92SearchChat py-2 px-3 d-flex justify-content-center align-content-center">
                             <div class="input-group input-group-sm">
                                 <span class="input-group-text c92Bg-grey" @click.stop="filteredList()">&#x2315;</span>
-                                <input type="text" class="form-control c92Bg-grey" v-model.trim="search" @keydown="filteredList()">
+                                <input type="text" class="form-control c92Bg-grey" v-model.trim="search"
+                                    @keydown="filteredList()">
                             </div>
                         </div>
                         <!--Lista contatti-->
                         <div class="c92ContactList py-3 pb-5">
-                            <div class="row flex-row g-0  align-items-center c92Hover border-bottom" v-for="(contact, i) in contacts" :key="contact.id" @click="selectedContact= contact" :class="{'d-none': !contact.visible}">
+                            <div class="row flex-row g-0  align-items-center c92Hover border-bottom"
+                                v-for="(contact, i) in contacts" :key="contact.id" @click="selectedContact= contact"
+                                :class="{'d-none': !contact.visible}">
                                 <div class="c92Profile col-2">
                                     <img class="p-1 my-2" :src="contact.avatar.replace('.png', '.jpg' )" alt="">
                                 </div>
-                                        
+
                                 <div class="col-6">
-                                    <div> {{contact.name}} </div> 
-                                   <div class="cut-text">{{contact.messages[contact.messages.length -1].message}}</div>  
+                                    <div> {{contact.name}} </div>
+                                    <div class="cut-text">{{contact.messages[contact.messages.length -1].message}}</div>
                                 </div>
 
                                 <div class="col-4">
-                                    <small> 
+                                    <small>
                                         {{contact.messages[contact.messages.length -1].date}}
-                                    </small>  
+                                    </small>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!--Creazione della chat da visualizzare -->
-                    <div  v-if="selectedContact != null" class="c92ContainerChat">
+                    <div v-if="selectedContact != null" class="c92ContainerChat">
                         <!--Visualizzazione dell'utente con cui stiamo scrivendo-->
                         <div class="c92ContactHeader">
 
@@ -106,34 +114,39 @@
                                     <div class="d-flex justify-content-center c92Cursors">
                                         <i class="fa-solid fa-magnifying-glass fs-5 text-secondary py-1 px-2"></i>
                                         <i class="fa-solid fa-paperclip fs-5 text-secondary py-1 px-2"></i>
-                                        <i class="fa-solid fa-ellipsis-vertical fs-5 text-secondary py-1 px-2"></i>    
+                                        <i class="fa-solid fa-ellipsis-vertical fs-5 text-secondary py-1 px-2"></i>
                                     </div>
 
                                 </div>
                             </div>
-                        
+
                         </div>
                         <!--Container dove andremo a visualizzare i messaggi scritti dall'utente-->
                         <div class="c92Chat">
                             <!--Print message if sent or received-->
-                            <div class="c92Option" :class="{ 'c92Sent': message.status == 'sent', 'c92Received': message.status == 'received' }" v-for="(message, i) in selectedContact.messages" :key="i">
-                               <div class="text-dark badge p-2 m-3 c92BreakWord c92BoxMsg" :class="{ 'c92SentBg': message.status == 'sent', 'c92ReceivedBg': message.status == 'received' }">
-                                <!--Message-->    
-                                <div class="text-start p-1 me-4">{{message.message}}</div> 
+                            <div class="c92Option"
+                                :class="{ 'c92Sent': message.status == 'sent', 'c92Received': message.status == 'received' }"
+                                v-for="(message, i) in selectedContact.messages" :key="i">
+
+                                <div class="text-dark badge p-2 m-3 c92BreakWord c92BoxMsg"
+                                    :class="{ 'c92SentBg': message.status == 'sent', 'c92ReceivedBg': message.status == 'received' }">
+                                    <!--Message-->
+                                    <span class="text-start p-1 me-4">{{message.message}}</span>
                                     <!--MILESTON 5-->
+                                    <span class="fa-solid fa-chevron-down c92Cursors"></span>
                                     <div class="c92OptionMsg c92Cursors">
-                                        <i class="fa-solid fa-chevron-down"></i>
-                                        <div class="c92Options text-secondary py-1">
-                                            <p class="border-bottom py-1">Message info</p>
-                                            <p class="border-bottom">Delete message</p>
+                                        <div class="c92OptionsSelect d-flex flex-wrap justify-content-center p-2 text-dark">
+                                            <div>Message info</div>
+                                            <div @click.stop="deleteMsg(item)">Delete message</div>
                                         </div>
                                     </div>
                                     <!--Date message-->
                                     <div>
-                                        <small class="text-end text-secondary">{{message.date}}</small> 
+                                        <small class="text-end text-secondary">{{message.date}}</small>
                                     </div>
-
+                                    
                                 </div>
+
                             </div>
                         </div>
                         <!-- barra di input per scrivere i messaggi-->
@@ -144,12 +157,14 @@
                                 </div>
                             </div>
                             <div class="col-10">
-                                <input type="text" placeholder="send message" class="w-100" v-model.trim="newMessage" @keyup.enter="insertNewMessage()">
+                                <input type="text" placeholder="send message" class="w-100" v-model.trim="newMessage"
+                                    @keyup.enter="insertNewMessage()">
                             </div>
                             <div class="col">
                                 <div class="d-flex justify-content-center">
-                                    <div  v-if="newMessage != ''">
-                                        <i class="fa-solid fa-paper-plane text-secondary fs-6 c92Cursors"  @click.stop="insertNewMessage()"></i>
+                                    <div v-if="newMessage != ''">
+                                        <i class="fa-solid fa-paper-plane text-secondary fs-6 c92Cursors"
+                                            @click.stop="insertNewMessage()"></i>
                                     </div>
                                     <div v-else>
                                         <i class="fa-solid fa-microphone text-secondary fs-6 c92Cursors"></i>
@@ -165,4 +180,5 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@3.2.47/dist/vue.global.min.js"></script>
     <script src="./script/script.js"></script>
 </body>
+
 </html>
